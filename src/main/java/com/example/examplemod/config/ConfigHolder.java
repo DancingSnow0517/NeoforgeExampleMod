@@ -1,21 +1,20 @@
-package com.example.examplemod;
+package com.example.examplemod.config;
 
+import com.example.examplemod.ExampleMod;
 
 import dev.toma.configuration.Configuration;
 import dev.toma.configuration.config.Config;
-import dev.toma.configuration.config.Configurable;
 import dev.toma.configuration.config.format.ConfigFormats;
 
 @Config(id = ExampleMod.MODID)
-public class ExampleModConfig {
+public class ConfigHolder {
 
-    public static ExampleModConfig INSTANCE;
+    public static ConfigHolder INSTANCE;
 
     public static void init() {
         if (INSTANCE == null) {
-            INSTANCE = Configuration.registerConfig(ExampleModConfig.class, ConfigFormats.yaml()).getConfigInstance();
+            INSTANCE = Configuration.registerConfig(ConfigHolder.class, ConfigFormats.yaml())
+                    .getConfigInstance();
         }
     }
-    @Configurable
-    public boolean testConfig = false;
 }
